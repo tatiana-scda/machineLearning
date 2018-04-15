@@ -1,0 +1,50 @@
+code,description
+--,Unspecified
+ACC,Accumulation
+AEG,Avian/reptilian egg
+AVO,Avoidance
+BCM,Biochemistry
+BEH,Behavior
+CEL,Cell(s)
+DVP,Development
+ENZ,Enzyme(s)
+FDB,Feeding behavior
+GEN,Genetics
+GRO,Growth
+HIS,Histology
+HRM,Hormone(s)
+IMM,Immunological
+INJ,Injury
+ITX,Intoxication
+MOR,Mortality
+MPH,Morphology
+NOC,Multiple or Undefined
+NR,Not reported
+PHY,Physiology
+POP,Population
+PRS,Ecosystem process
+REP,Reproduction
+~ACC,Accumulation
+~AEG,Avian/reptilian eg
+~AVO,Avoidance
+~BCM,Biochemistry
+~BEH,Behavior
+~CEL,Cell(s)
+~DVP,Development
+~ENZ,Enzyme(s)
+~FDB,Feeding behavior
+~GEN,Genetics
+~GRO,Growth
+~HIS,Histology
+~HRM,Hormone(s)
+~IMM,Immunological
+~INJ,Injury
+~ITX,Intoxication
+~MOR,Mortality
+~MPH,Morphology
+~NOC,Multiple or Undefined
+~NR,Not reported
+~PHY,Physiology
+~POP,Population
+~PRS,Ecosystem process
+~REP,Reproduction
