@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22180\viewh13900\viewkind0
+\deftab720
+\pard\pardeftab720\sl440\sa298\partightenfactor0
+
+\f0\b\fs36 \cf2 \expnd0\expndtw0\kerning0
+Trabalho Pr\'e1tico 1\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 - Redes Neuronais + Backpropagation
+\b0 \
+Neste trabalho voc\'ea ir\'e1 implementar uma rede neuronal com tr\'eas camadas:\
+1. Camada de entrada: cada unidade representa uma dimens\'e3o do dado de entrada.\
+2. Camada oculta: cada unidade representa uma transforma\'e7\'e3o a partir das unidades de entrada.\
+3. Camada de sa\'edda: cada unidade representa a chance da sa\'edda correspondente ser a correta.\
+Voc\'ea ir\'e1 utilizar a fun\'e7\'e3o Sigm\'f3ide para obter n\'e3o-linearidade. Al\'e9m disso, a fun\'e7\'e3o de perda a ser minimizada \'e9 a seguinte:\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \outl0\strokewidth0 \strokec2 
+\f1 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Pasted Graphic.tiff \width16000 \height2000 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f0 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 onde m \'e9 a quantidade de entradas no treino, K \'e9 o n\'famero de sa\'eddas poss\'edveis,\'a0{{\NeXTGraphic unknown.png \width640 \height680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\'a0representa a sa\'edda correta de cada classe k em cada entrada (i), e similarmente\'a0{{\NeXTGraphic 1__#$!@%!#__unknown.png \width1700 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}representa a sa\'edda dada pela rede neuronal.\
+O dado a ser utilizado est\'e1 anexado. Trata-se de 5000 entradas, onde cada entrada refere-se a um d\'edgito escrito manualmente (i.e., MNIST dataset). Dessa forma, m=5000 e K=10. Cada entrada \'e9 dada por uma matriz de dimens\'f5es 28 por 28, ou seja, um vetor de 784 dimens\'f5es. A primeira coluna do arquivo sempre \'e9 o r\'f3tulo do d\'edgito correto.\
+A rede neuronal a ser implementada dever\'e1 ter 784 unidades de entrada e 10 unidades de sa\'edda. Em seus experimentos, voc\'ea dever\'e1 variar o n\'famero de unidades na camada oculta (25, 50, 100).\
+Al\'e9m disso, voc\'ea dever\'e1 comparar os seguintes algoritmos de c\'e1lculo de gradiente:\
+1. Gradient Descent: o gradiente \'e9 calculado ap\'f3s cada \'e9poca (ap\'f3s as 5000 entradas serem processadas).\
+2. Stochastic Gradient Descent: o gradiente \'e9 calculado ap\'f3s cada entrada.\
+3. Mini-Batch: o gradiente \'e9 calculado ap\'f3s um certo n\'famero de entradas (considere 10 e 50).\
+Por fim, voc\'ea tamb\'e9m dever\'e1 variar a taxa de aprendizado: 0.5, 1, 10.\
+O documento a ser entregue dever\'e1 apresentar o resultado de seus experimentos. Ou seja, dever\'e1 apresentar discuss\'e3o da varia\'e7\'e3o do n\'famero de unidades na camada oculta para cada um dos tr\'eas algoritmos de c\'e1lculo de gradiente. Voc\'ea dever\'e1 apresentar gr\'e1ficos mostrando a converg\'eancia do erro emp\'edrico para cada situa\'e7\'e3o (unidades na camada oculta, algoritmo de c\'e1lculo do gradiente, taxa de aprendizado). Voc\'ea dever\'e1 deixar claras todas as hip\'f3teses que julgar serem pertinentes.\
+}
