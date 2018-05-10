@@ -1,0 +1,11 @@
+virtualenv --system-site-packages <diretory>
+cd <directory>
+$ source ./bin/activate
+
+
+(targetDirectory)$ easy_install -U pip
+(targetDirectory)$ pip install --upgrade tensorflow 
+#if fail: $pip install --upgrade
+
+
+(targetDirectory)$ deactivate 

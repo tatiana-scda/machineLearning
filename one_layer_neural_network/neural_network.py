@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 import pandas as pd
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 
 #------------------------------------------------------
 #parameters settings
@@ -47,9 +47,9 @@ mnist = []
 features = []
 labels = []
 
-with open("data_tp1") as f:
-	for line in f:
-		mnist[line] = [line[0] for line in "data_tp1"]
+with open("data_tp0") as f:
+	for i in f:
+		mnist.append() = line[0]
 		f = f.drop(f.columns[i], axis=1)
 
 
@@ -70,7 +70,7 @@ with tf.Session() as sess:
 			x = features[start:end]
 			y = labels[start:end]
 			update.run(feed_dict = {x: batch[0], y: batch[1]})
-		accuracy = accuracy.eval(feed_dict = {x: mnist[0], y: mnist[1]})
+		accuracy = accuracy.eval(feed_dict = {x: mnist[0], y: mnist[1]}) #0 feat 1 label
 		print("epoch: " + epoch + ", train accuracy = " + accuracy)
 	plt.plot(x, y);
 	plt.plot(x, accuracy);
