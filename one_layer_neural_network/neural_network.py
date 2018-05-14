@@ -4,7 +4,6 @@ import numpy as np
 import tensorflow as tf
 import pandas as pd
 import matplotlib.pyplot as plt
-#%matplotlib inline
 
 #------------------------------------------------------
 #parameters settings
@@ -18,18 +17,28 @@ learning_rate = 0.01 #Varies between 0.05, 1 and 10
 
 #------------------------------------------------------
 
+nmist_df = pd.read_csv('nmist_dataset.csv', header=None)
+
+#setting data
+labels = nmist_df.iloc[:, :1] #here i'm setting all the lines and then column from initial to one (so, only the comun zero)
+features = nmist_df.iloc[:, 1:] #setting now all the rest of mnist
+
+#input and output
 x = tf.placeholder(tf.float32, [None, 784], name='ph_features')
 y = tf.placeholder(tf.float32, [None, 10], name='ph_output')
 
+#weight and bias from the hidden layer
 w = tf.Variable(tf.truncated_normal([784, neurons_in_hl], mean=0, stddev=1 / np.sqrt(784)), name='weights')
 b = tf.Variable(tf.truncated_normal([neurons_in_hl], mean=0, stddev=1 / np.sqrt(784)), name='biases')
 
+#weight and bias from the outup layer
 wo = tf.Variable(tf.random_normal([neurons_in_hl, 10], mean=0, stddev=1/np.sqrt(784)), name='weightsOut')
 bo = tf.Variable(tf.random_normal([10], mean=0, stddev=1/np.sqrt(784)), name='biasesOut')
 
+#hidden layer ajust function
 hl = tf.nn.sigmoid((tf.matmul(y,wo)+bo),name='activationLayer')
 
-# Compute the output layer
+#compute the output layer
 out = tf.matmul(hl,wo) + bo
 
 #loss function
@@ -41,17 +50,6 @@ accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 
 #optmizer
 update = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
-
-#setting data
-mnist = []
-features = []
-labels = []
-
-with open("data_tp0") as f:
-	for i in f:
-		mnist.append() = line[0]
-		f = f.drop(f.columns[i], axis=1)
-
 
 # initialization of all variables
 initial = tf.global_variables_initializer()
