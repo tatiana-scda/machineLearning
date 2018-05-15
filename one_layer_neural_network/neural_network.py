@@ -75,6 +75,7 @@ with tf.Session() as sess:
 
 			x = mnist_features[start:end]
 			y = mnist_classes[start:end]
+			
 			update.run(feed_dict = {x: batch[0], y: batch[1]})
 		accuracy = accuracy.eval(feed_dict = {x: mnist[0], y: mnist[1]}) #0 feat 1 label
 		print("epoch: " + epoch + ", train accuracy = " + accuracy)
