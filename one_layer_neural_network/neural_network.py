@@ -58,7 +58,7 @@ update = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 #initialization of all variables
 initial = tf.global_variables_initializer()
 
-print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rate: %f" %(batch_size, neurons_in_hl, learning_rate))
+print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rate: %.2f" %(batch_size, neurons_in_hl, learning_rate))
 
 #launch a session to run 
 with tf.Session() as sess:
@@ -75,7 +75,7 @@ with tf.Session() as sess:
 
 			update.run(feed_dict = {x: mnist_features[start:end], y: mnist_classes[start:end]})
 		acc = accuracy.eval(feed_dict = {x: mnist_features, y: mnist_classes})
-		print("epoch: " + str(epoch) + ", train accuracy = " + str(acc))
+		print("epoch: " + str(epoch) + ", train accuracy: " + str(acc))
 	#plt.plot(x, y);
 	#plt.plot(x, accuracy);
 
