@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 import pandas as pd
 import matplotlib.pyplot as plt
+plt.style.use('seaborn-whitegrid')
 
 #------------------------------------------------------
 #hyperparameters settings
@@ -11,8 +12,8 @@ import matplotlib.pyplot as plt
 #1. Gradient Descent: batch = 5000
 #2. Stochastic Gradient Descent: batch = 1
 #3. Mini-Batch: batch = 10 ~ 50
-batch_size = 1000
-neurons_in_hl = 100 #25, 50 or 100
+batch_size = 500
+neurons_in_hl = 50 #25, 50 or 100
 learning_rate = 0.05 #Varies between 0.05, 1 and 10
 
 #------------------------------------------------------
@@ -64,6 +65,8 @@ print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rat
 with tf.Session() as sess:
 	sess.run(initial) #initializes variables
 
+	plot_data = []
+
 	for epoch in range(100):
 
 		#train with each example
@@ -76,7 +79,10 @@ with tf.Session() as sess:
 			update.run(feed_dict = {x: mnist_features[start:end], y: mnist_classes[start:end]})
 		acc = accuracy.eval(feed_dict = {x: mnist_features, y: mnist_classes})
 		print("epoch: " + str(epoch) + ", train accuracy: " + str(acc))
+		plot_data.append(acc)
+	plt.plot(plot_data)	
+	plt.show()
 	#plt.plot(x, y);
-	#plt.plot(x, accuracy);
+	#plt.plot(x, acc);
 
 sess.close()
