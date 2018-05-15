@@ -11,20 +11,20 @@ import matplotlib.pyplot as plt
 #1. Gradient Descent: batch = 5000
 #2. Stochastic Gradient Descent: batch = 1
 #3. Mini-Batch: batch = 10 ~ 50
-batch_size = 5000
+batch_size = 50
 neurons_in_hl = 10 #25, 50 or 100
-learning_rate = 0.01 #Varies between 0.05, 1 and 10
+learning_rate = 0.05 #Varies between 0.05, 1 and 10
 
 #------------------------------------------------------
 
-nmist_df = pd.read_csv('nmist_dataset.csv', header=None)
+mnist_df = pd.read_csv('mnist_dataset.csv', header=None)
 
 #parsing the dataset
-labels = nmist_df.iloc[:, :1] #here i'm setting all the lines and then column from initial to one (so, only the comun zero)
-features = nmist_df.iloc[:, 1:] #setting now all the rest of mnist
+labels = mnist_df.iloc[:, :1] #here i'm setting all the lines and then column from initial to one (so, only the comun zero)
+features = mnist_df.iloc[:, 1:] #setting now all the rest of mnist
 
 #creating one-hot
-mnist_classes = labels.values
+mnist_classes = np.eye(10, dtype=int)[[item for sublist in labels.values for item in sublist]]
 mnist_features = features.values
 
 #input and output
@@ -40,9 +40,9 @@ wo = tf.Variable(tf.random_normal([neurons_in_hl, 10], mean=0, stddev=1/np.sqrt(
 bo = tf.Variable(tf.random_normal([10], mean=0, stddev=1/np.sqrt(784)), name='biasesOut')
 
 #hidden layer ajust function using sigmoid and matmul for matrix multiplication
-hl = tf.nn.sigmoid((tf.matmul(y,wo)+bo),name='activationLayer')
+hl = tf.nn.sigmoid((tf.matmul(x,w)+b),name='activationLayer')
 
-#compute the output layer
+#compute the output layer with updated values for weight ans bias
 out = tf.matmul(hl,wo) + bo
 
 #loss function
@@ -58,11 +58,11 @@ update = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 #initialization of all variables
 initial = tf.global_variables_initializer()
 
-print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rate: %d" %(batch_size, neurons_in_hl, learning_rate))
+print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rate: %.2f" %(batch_size, neurons_in_hl, learning_rate))
 
 #launch a session to run 
 with tf.Session() as sess:
-	sess.run(initial) # Initializes variables
+	sess.run(initial) #initializes variables
 
 	for epoch in range(100):
 
@@ -73,13 +73,10 @@ with tf.Session() as sess:
 			start = i*batch_size #separating each batch considering the total and how many times we will do this process
 			end = (i+1)*batch_size
 
-			x = mnist_features[start:end]
-			y = mnist_classes[start:end]
-
 			update.run(feed_dict = {x: mnist_features[start:end], y: mnist_classes[start:end]})
-		accuracy = accuracy.eval(feed_dict = {x: mnist_features, y: mnist_classes})
-		print("epoch: " + epoch + ", train accuracy = " + accuracy)
-	plt.plot(x, y);
-	plt.plot(x, accuracy);
+		acc = accuracy.eval(feed_dict = {x: mnist_features, y: mnist_classes})
+		print("epoch: " + str(epoch) + ", train accuracy = " + str(acc))
+	#plt.plot(x, y);
+	#plt.plot(x, accuracy);
 
 sess.close()
