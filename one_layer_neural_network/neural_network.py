@@ -12,8 +12,8 @@ plt.style.use('seaborn-whitegrid')
 #1. Gradient Descent: batch = 5000
 #2. Stochastic Gradient Descent: batch = 1
 #3. Mini-Batch: batch = 10 ~ 50
-batch_size = 500
-neurons_in_hl = 50 #25, 50 or 100
+batch_size = 50
+neurons_in_hl = 100 #25, 50 or 100
 learning_rate = 0.05 #Varies between 0.05, 1 and 10
 
 #------------------------------------------------------
