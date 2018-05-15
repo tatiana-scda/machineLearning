@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #------------------------------------------------------
-#parameters settings
+#hyperparameters settings
 
 #1. Gradient Descent: batch = 5000
 #2. Stochastic Gradient Descent: batch = 1
@@ -19,9 +19,13 @@ learning_rate = 0.01 #Varies between 0.05, 1 and 10
 
 nmist_df = pd.read_csv('nmist_dataset.csv', header=None)
 
-#setting data
+#parsing the dataset
 labels = nmist_df.iloc[:, :1] #here i'm setting all the lines and then column from initial to one (so, only the comun zero)
 features = nmist_df.iloc[:, 1:] #setting now all the rest of mnist
+
+#creating one-hot
+mnist_classes = labels.values
+mnist_features = features.values
 
 #input and output
 x = tf.placeholder(tf.float32, [None, 784], name='ph_features')
