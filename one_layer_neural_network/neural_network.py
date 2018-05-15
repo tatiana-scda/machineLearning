@@ -39,7 +39,7 @@ b = tf.Variable(tf.truncated_normal([neurons_in_hl], mean=0, stddev=1 / np.sqrt(
 wo = tf.Variable(tf.random_normal([neurons_in_hl, 10], mean=0, stddev=1/np.sqrt(784)), name='weightsOut')
 bo = tf.Variable(tf.random_normal([10], mean=0, stddev=1/np.sqrt(784)), name='biasesOut')
 
-#hidden layer ajust function
+#hidden layer ajust function using sigmoid and matmul for matrix multiplication
 hl = tf.nn.sigmoid((tf.matmul(y,wo)+bo),name='activationLayer')
 
 #compute the output layer
@@ -55,20 +55,24 @@ accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 #optmizer
 update = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 
-# initialization of all variables
+#initialization of all variables
 initial = tf.global_variables_initializer()
 
 print("initial setup: batch: %d \nneurons in the hidden layer: %d \nlearning rate: %d" %(batch_size, neurons_in_hl, learning_rate))
 
-# Launch a session to run 
+#launch a session to run 
 with tf.Session() as sess:
 	sess.run(initial) # Initializes variables
 
 	for epoch in range(100):
-		#Train with each example
-		for i in range(len(mnist[0])):
-			start = i
-			end = i + batch_size
+
+		#train with each example
+		total_batch = int(5000/batch_size)
+		for i in range (total_batch):
+
+			start = i*batch_size #separating each batch considering the total and how many times we will do this process
+			end = (i+1)*batch_size
+
 			x = features[start:end]
 			y = labels[start:end]
 			update.run(feed_dict = {x: batch[0], y: batch[1]})
