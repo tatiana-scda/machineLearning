@@ -17,7 +17,7 @@ learning_rate = 0.01 #Varies between 0.05, 1 and 10
 
 #------------------------------------------------------
 
-nmist_df = pd.read_csv('nmist_dataset', header=None)
+nmist_df = pd.read_csv('nmist_dataset.csv', header=None)
 
 #parsing the dataset
 labels = nmist_df.iloc[:, :1] #here i'm setting all the lines and then column from initial to one (so, only the comun zero)
@@ -75,9 +75,9 @@ with tf.Session() as sess:
 
 			x = mnist_features[start:end]
 			y = mnist_classes[start:end]
-			
-			update.run(feed_dict = {x: batch[0], y: batch[1]})
-		accuracy = accuracy.eval(feed_dict = {x: mnist[0], y: mnist[1]}) #0 feat 1 label
+
+			update.run(feed_dict = {x: mnist_features[start:end], y: mnist_classes[start:end]})
+		accuracy = accuracy.eval(feed_dict = {x: mnist_features, y: mnist_classes})
 		print("epoch: " + epoch + ", train accuracy = " + accuracy)
 	plt.plot(x, y);
 	plt.plot(x, accuracy);
